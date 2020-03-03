@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/E2TUJSD.jpg" width="900" height="400">
 </p>
 
-## Problem Statement 
+## Problem Statement (source: Kaggle)
 The challenge is to create a model that uses data from the first 24 hours of intensive care to predict patient survival. MIT's GOSSIS community initiative, with privacy certification from the Harvard Privacy Lab, has provided a dataset of more than 130,000 hospital Intensive Care Unit (ICU) visits from patients, spanning a one-year timeframe. This data is part of a growing global effort and consortium spanning Argentina, Australia, New Zealand, Sri Lanka, Brazil, and more than 200 hospitals in the United States.
 
 ## Evaluation
@@ -35,4 +35,4 @@ Winners will be announced at the WiDS Conference at Stanford University on March
 
 All deadlines are at 11:59 PM UTC on the corresponding day unless otherwise noted. The competition organizers reserve the right to update the contest timeline if necessary. Please join the community mailing list to receive all updates and announcements.
 
-**Source: Kaggle**
+
