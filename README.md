@@ -1,3 +1,7 @@
+<p>
+<img src="https://i.imgur.com/E2TUJSD.jpg" width="900" height="400">
+</p>
+
 # Kaggle - Women in Data Science Datathon 2020
 
 ## Problem Statement 
