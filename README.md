@@ -35,7 +35,7 @@ The [Datasets](Datasets) :file_folder: contains the required data files:
 
 ## Files
 
-Working in a 4-person team, we decided on Jupyter Notebooks using Python :snake: as the programming language and divided up the tasks (all except the last) into what you now see as folders in the repository:
+Working in a 4-person team, we decided on Jupyter Notebooks using Python :snake: as the programming language and divided up the tasks into what you now see as folders in the repository:
 - [EDA](EDA) (Exploratory Data Analysis)
 - [Data Preprocessing](DataPreprocessing)
 - [Modeling](DataModeling)
