@@ -41,8 +41,6 @@ Working in a 4-person team, we decided on Jupyter Notebooks using Python :snake:
 - [Modeling](DataModeling)
 - Wrapping the entire code base into modular functions 
 
-All team members tried their hand at the various tasks. We haven't taken any of the files down since we wanted to make sure
-
 ### :sparkles: main.ipynb :sparkles: 
 The star of the show was most definitely our final file named [main.ipynb](main.ipynb). All our efforts were consolidated here. Feel free to clone the repo, run the main.ipynb file and see the magic happen! 
 
