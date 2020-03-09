@@ -24,15 +24,106 @@ encounter_id,hospital_death
 etc
 ```
 
-## Timeline
-February 21, 2020: Team Merger deadline. This is the last day competitors may join or merge teams.
+---
 
-February 24, 2020: Entry deadline. You must accept the competition rules by this date in order to compete.
+## Data
 
-February 24, 2020: Final submission deadline.
+The [Datasets](Datasets) :file_folder: contains the required data files:
+- **training_v2.csv**: the training data which contains 91,713 patient records. 
+- **WiDS Datathon 2020 Dictionary.csv**: additional information about the data.
+- **unlabeled.csv**: the test data which contains 39,308 records. Predictions were required to be submitted against the test data.
 
-Winners will be announced at the WiDS Conference at Stanford University on March 2, 2020.
+## Files
 
-All deadlines are at 11:59 PM UTC on the corresponding day unless otherwise noted. The competition organizers reserve the right to update the contest timeline if necessary. Please join the community mailing list to receive all updates and announcements.
+Working in a 4-person team, we decided on Jupyter Notebooks using Python :snake: as the programming language and divided up the tasks (all except the last) into what you now see as folders in the repository:
+- [EDA](EDA) (Exploratory Data Analysis)
+- [Data Preprocessing](DataPreprocessing)
+- [Modeling](DataModeling)
+- Wrapping the entire code base into modular functions 
+
+All team members tried their hand at the various tasks. We haven't taken any of the files down since we wanted to make sure
+
+### :sparkles: main.ipynb :sparkles: 
+The star of the show was most definitely our final file named [main.ipynb](main.ipynb). All our efforts were consolidated here. Feel free to clone the repo, run the main.ipynb file and see the magic happen! 
+
+:warning: Make sure you have Python3, Jupyter and all the third-party libraries installed in the environment prior to running the file.
+
+### Output
+
+When you run `main.ipynb`, an output file called `submission_file.csv` will be created. It will contain 2 columns as per the Kaggle requirements: 
+- `encounter_id` 
+- the vector of prediction probabilities for the target variable in `hospital_death`
+
+## Machine Learning
+
+### Exploratory Data Analysis
+- Check for duplicate, unique and missing values in the dataset.
+- Data Profiling
+    - We split the numerical columns and categorical columns and obtained a summary statistics against both column types. This allowed us to gain a general idea about the quality of the data and to check for anomalous patterns.
+- Visualization
+    - We used univariate analysis to visually observe the distribution of data in particular columns.
+
+### Data Preprocessing
+- Resampling 
+Downsampling was performed to resolve the class imbalance problem. Followed by, shuffling the downsampled data to randomize the class distribution in the new dataset.
+
+- Missing Value Imputation
+    - For numerical variables: The missing values were imputed with their column-wise mean.
+    - For categorical variables: Based on team discussions, missing values were imputed with values as illustrated in the examples below.
+    > Example 1: Imputed the missing values for `ethnicity` with _Other/Unknown_ since that value was already present in the data.
+    
+    > Example 2: Imputed missing values for `gender` as either _M_ or _F_ based on the percentage of the non-null values of these 2 classes. 
+
+- Dimensionality Reduction
+The original training data had 186 features and in order to reduce dimensions, we did the following:
+    - Dropped columns containing more than 75% null values
+    > The column `h1_pao2fio2ratio_min` was missing 83.5% of its data and hence was dropped.
+    - Reduced collinearity
+    > Dropped the `height` and `weight` columns since they were collinear to the `bmi` column.
+    - Dropped columns based on manual evaluation of the data 
+    > Dropped `readmission_status` since the entire column contained the same value for every observation and didn't add any extra information to the predictability of the target variable.
+
+### Modeling
+
+Various classification algorithms were used to model the data:
+- Logistic Regression
+- Random Forest Classification
+- Gradient Boosting
+- Support Vector Machine
+
+Gradient Boosting was eventually selected as the final model.
+
+### Model Tuning
+
+- Hyperparameter Tuning
+    - Grid Search was used to find the best set of hyperparamters to run the model with. 
+- Cross-Validation
+    - We applied 10-fold cross validation in order to use the entire training set efficiently for both training as well as validation (in different runs). 
+- Feature Engineering
+    - We added Group Description Statistics to the dataframe in order to increase our score which it did!
+
+### Programming Aspects
+- Use of Python's `os` folder to resolve the path to the data files.
+**Advantage:** Anyone cloning the repo can immediately run the main file (provided they have all the dependencies installed as mentioned above.)
+
+- Wrapping the entire code base into functions. 
+**Advantage:** The code instantly became more readable, modular and reusable.
+
+- Following Python's PEP-8 standards such as:
+    - standard library imports before third-party imports
+    - using `import random` instead of `from random import *`
+    - using proper naming conventions for variable and function names
+    - writing docstrings for every function
+    - writing comments at the indentation level of the code
+
+## Result
+
+We achieved an overall AUC ROC (Area Under the Receiver Operating Characteristics Curve) score of 92.4%. Below is the progression of our score levels:
+
+Implementation | AUC ROC Score
+--- | ---
+Gradient Boosting Classifier | 80%
+10-fold Cross Validation | 89%
+Feature Engineering using Group Description Statistics | 92.4%
 
 
