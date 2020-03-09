@@ -55,24 +55,25 @@ When you run `main.ipynb`, an output file called `submission_file.csv` will be c
 ## Machine Learning
 
 ### Exploratory Data Analysis
-- Check for duplicate, unique and missing values in the dataset.
-- Data Profiling
+- Check for **duplicate, unique and missing values** in the dataset.
+- **Data Profiling**
     - We split the numerical columns and categorical columns and obtained a summary statistics against both column types. This allowed us to gain a general idea about the quality of the data and to check for anomalous patterns.
-- Visualization
+- **Visualization**
     - We used univariate analysis to visually observe the distribution of data in particular columns.
 
 ### Data Preprocessing
-- Resampling 
-Downsampling was performed to resolve the class imbalance problem. Followed by, shuffling the downsampled data to randomize the class distribution in the new dataset.
+- **Resampling**
+    - Downsampling was performed to resolve the class imbalance problem. 
+    - Followed by, shuffling the downsampled data to randomize the class distribution in the new dataset.
 
-- Missing Value Imputation
+- **Missing Value Imputation**
     - For numerical variables: The missing values were imputed with their column-wise mean.
     - For categorical variables: Based on team discussions, missing values were imputed with values as illustrated in the examples below.
     > Example 1: Imputed the missing values for `ethnicity` with _Other/Unknown_ since that value was already present in the data.
     
     > Example 2: Imputed missing values for `gender` as either _M_ or _F_ based on the percentage of the non-null values of these 2 classes. 
 
-- Dimensionality Reduction
+- **Dimensionality Reduction**
 The original training data had 186 features and in order to reduce dimensions, we did the following:
     - Dropped columns containing more than 75% null values
     > The column `h1_pao2fio2ratio_min` was missing 83.5% of its data and hence was dropped.
@@ -93,11 +94,11 @@ Gradient Boosting was eventually selected as the final model.
 
 ### Model Tuning
 
-- Hyperparameter Tuning
+- **Hyperparameter Tuning**
     - Grid Search was used to find the best set of hyperparamters to run the model with. 
-- Cross-Validation
+- **Cross-Validation**
     - We applied 10-fold cross validation in order to use the entire training set efficiently for both training as well as validation (in different runs). 
-- Feature Engineering
+- **Feature Engineering**
     - We added Group Description Statistics to the dataframe in order to increase our score which it did!
 
 ### Programming Aspects
